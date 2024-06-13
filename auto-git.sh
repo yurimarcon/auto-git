@@ -24,7 +24,7 @@ function switch_branch (){
     git switch "$selected"
 }
 function merge (){
-    
+    echo "Jhoe"
     selected=$(git branch | fzf +m \
         --height 100% \
         --layout reverse \
