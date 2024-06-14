@@ -12,6 +12,11 @@ function validate_local_dir (){
         mkdir ~/.local/bin
     fi
 
+    if [ ! -d ~/.local/auto-git ]; then
+        echo "You do not have the source code, pleas clone the git repository."
+        exit 1
+    fi
+
 }
 
 function install (){
@@ -26,7 +31,9 @@ function install (){
 
 if [ -f ~/.local/bin/auto-git ]; then
     echo "Upgrading..."
+    install
 else
     echo "Instaling..."
+    install
 fi
 
