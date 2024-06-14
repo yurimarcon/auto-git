@@ -104,4 +104,15 @@ function main (){
     esac
 }
 
+function validate_git_repository (){
+
+    git status >> /dev/null 2>&1
+    
+    if [ $? -eq 128 ]; then
+        echo "This not is a git repository!"
+        exit 1
+    fi
+}
+
+validate_git_repository 
 main
