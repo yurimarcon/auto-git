@@ -32,7 +32,7 @@ source ~/.bashrc
 We welcome contributions! Here’s how you can help:
 
 1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
+2. Create a new branch (`git switch -c feature/<name-feature-branch>`).
 3. Make your changes.
 4. Commit your changes (`git commit -m 'Add some feature'`).
 5. Push to the branch (`git push origin feature-branch`).
@@ -40,7 +40,7 @@ We welcome contributions! Here’s how you can help:
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the GPL3 License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
@@ -48,5 +48,5 @@ For any questions or feedback, please contact [Yuri Marcon](https://github.com/y
 
 ---
 
-Thank you for checking out Auto-git! We hope you find it useful and educational.
+Thank you for checking out Auto-git! I hope you find it useful and educational.
 
