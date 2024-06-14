@@ -10,7 +10,7 @@ ALIAS_CMD="alias $ALIAS_NAME=\"$TARGET_SCRIPT\""
 BASHRC="$HOME/.bashrc"
 
 function log_message() {
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1"
+    echo "$(date '+%d-%m-%Y %H:%M:%S') - $1"
 }
 
 function validate_local_dir () {
@@ -52,6 +52,7 @@ function install () {
     log_message "Directory $SCRIPT_DIR deleted."
 
     log_message "Installation completed successfully!"
+    log_message "***Restart the terminal to everything run corretly***"
 }
 
 function main () {
