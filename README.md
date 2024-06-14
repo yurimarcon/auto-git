@@ -1,17 +1,52 @@
 # Auto-git
 
-This is a didatic project with the knologies einered in a Git and Github course.
-Fell free to clone this project to use or emprove this application and send a pull request.
+Auto-git is a didactic project developed as part of a Git and GitHub course. Feel free to clone this project, use it, improve it, and send a pull request!
 
-## Install
+## Installation
 
-If you just want use this project fell free to make a installation in your system, just put the flowing comand in your terminal emilator:
+To install and use this project, simply run the following commands in your terminal emulator:
 
 ```sh
-
 git clone --depth 1 https://github.com/yurimarcon/auto-git ~/.local/auto-git 
 ~/.local/auto-git/install.sh
-
 ```
 
-This command will put this code in .local repository in your machine and include a Alias in your .bashrc.
+This command will clone the repository into the `.local` directory on your machine and add an alias to your `.bashrc` file.
+
+## Features
+
+- **Easy Installation**: Quickly set up the project with a single command.
+- **Alias Configuration**: Automatically adds an alias to your `.bashrc` for easy access.
+- **Educational**: Great for learning more about Git and GitHub.
+
+## Usage
+
+After installation, you can use the `ag` alias to run auto-git commands. Ensure you restart your terminal or source your `.bashrc` to apply the changes:
+
+```sh
+source ~/.bashrc
+```
+
+## Contributing
+
+We welcome contributions! Here’s how you can help:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any questions or feedback, please contact [Yuri Marcon](https://github.com/yurimarcon).
+
+---
+
+Thank you for checking out Auto-git! We hope you find it useful and educational.
+
