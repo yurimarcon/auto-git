@@ -10,7 +10,7 @@ If you just want use this project fell free to make a installation in your syste
 ```sh
 
 git clone --depth 1 https://github.com/yurimarcon/auto-git ~/.local/auto-git 
-~/.local/auto-git/install
+~/.local/auto-git/install.sh
 
 ```
 
