@@ -1,60 +1,67 @@
 #!/bin/bash
 
-function validate_local_dir (){
+LOCAL_DIR="$HOME/.local"
+BIN_DIR="$LOCAL_DIR/bin"
+SCRIPT_DIR="$LOCAL_DIR/auto-git"
+SCRIPT_FILE="$SCRIPT_DIR/auto-git.sh"
+TARGET_SCRIPT="$BIN_DIR/auto-git"
+ALIAS_NAME="ag"
+ALIAS_CMD="alias $ALIAS_NAME=\"$TARGET_SCRIPT\""
+BASHRC="$HOME/.bashrc"
 
-    if [ ! -d ~/.local ]; then 
-        echo "Creating ~/.local"
-        mkdir ~/.local
-    fi
-
-    if [ ! -d ~/.local/bin ]; then
-        echo "Creating ~/.local/bin"
-        mkdir ~/.local/bin
-    fi
-
-    if [ ! -d ~/.local/auto-git ]; then
-        echo "You do not have the source code, pleas clone the git repository."
-        exit 1
-    fi
-
+function log_message() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1"
 }
 
-function update_bashrc (){
+function validate_local_dir () {
+    if [ ! -d "$LOCAL_DIR" ]; then 
+        log_message "Creating $LOCAL_DIR directory."
+        mkdir "$LOCAL_DIR"
+    fi
 
-    res=$(grep '"ag"=' ~/.bashrc)
+    if [ ! -d "$BIN_DIR" ]; then
+        log_message "Creating $BIN_DIR directory."
+        mkdir "$BIN_DIR"
+    fi
+}
 
-    if [ -z "$res" ]; then
-        echo "alias \"ag\"=\"~/.local/bin/auto-git\"" >> ~/.bashrc
+function update_bashrc () {
+    if ! grep -q "$ALIAS_CMD" "$BASHRC"; then
+        echo "$ALIAS_CMD" >> "$BASHRC"
+        log_message "Alias '$ALIAS_NAME' added to $BASHRC."
     else
-        echo "You alredy have a alias called 'ag', if it not is to your auto-git, please configure manualy."
+        log_message "An alias named '$ALIAS_NAME' already exists. If it is not for auto-git, please configure it manually."
     fi
-    
 }
 
-function install (){
+function install () {
+    validate_local_dir
 
-    validate_local_dir 
+    if [ ! -f "$SCRIPT_FILE" ]; then
+        log_message "Script $SCRIPT_FILE not found. Installation aborted."
+        return 1
+    fi
 
-    cat ~/.local/auto-git/auto-git.sh > ~/.local/bin/auto-git
+    cp "$SCRIPT_FILE" "$TARGET_SCRIPT"
+    chmod +x "$TARGET_SCRIPT"
+    log_message "Script auto-git installed in $TARGET_SCRIPT."
 
-    chmod +x ~/.local/bin/auto-git
+    update_bashrc
 
-    update_bashrc 
+    rm -rf "$SCRIPT_DIR"
+    log_message "Directory $SCRIPT_DIR deleted."
 
-    sudo rm -r ~/.local/auto-git
-
+    log_message "Installation completed successfully!"
 }
 
 function main () {
-
-    if [ -f ~/.local/bin/auto-git ]; then
-        echo "Upgrading..."
-        install
+    if [ -f "$TARGET_SCRIPT" ]; then
+        log_message "Upgrading auto-git..."
     else
-        echo "Instaling..."
-        install
+        log_message "Installing auto-git..."
     fi
-
+    install
 }
 
 main
+
